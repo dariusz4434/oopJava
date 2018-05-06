@@ -1,0 +1,20 @@
+
+public class asd
+{
+	public static void main (String[] args)
+	{
+		// 1) Házi feladat
+		System.out.println("\nElsõ házi feladat:");
+		Euler ();
+	}
+	
+	static void Euler ()
+	{
+		double eulerOsszeg = 1;
+		for (int i = 1; i < 20; i++)
+		{
+			eulerOsszeg += 1 / (float)Faktorialis(i);
+		}
+		System.out.println(eulerOsszeg);
+	}
+}

@@ -1,0 +1,31 @@
+
+public class asd
+{
+	public static void main (String[] args)
+	{
+		// 1) Órai feladat
+		System.out.println("Elsõ feladat:");
+		WallisFormula ();
+		Leibniz ();
+	}
+	
+	static void WallisFormula ()
+	{
+		double wallisOsszeg = 1, szamlalo = 2, nevezo = 1;
+		for (int i = 0; i < 1000; i += 2)
+		{
+			wallisOsszeg *= ((szamlalo + i) / (nevezo + i)) * ((szamlalo + i) / (nevezo + (i + 2) ));
+		}
+		System.out.println(wallisOsszeg * 2);
+	}
+	
+	static void Leibniz ()
+	{
+		double leibnizOsszeg = 0;
+		for (int i = 0; i < 2000; i += 4)
+		{
+			leibnizOsszeg += (1 / (float)(i + 1)) - (1 / (float)(i + 3));
+		}
+		System.out.println(leibnizOsszeg * 4);
+	}
+}

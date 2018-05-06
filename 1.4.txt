@@ -1,0 +1,66 @@
+
+public class asd
+{
+	public static void main (String[] args)
+	{
+		// 4) Órai feladat
+		System.out.println("\nNegyedik feladat:");
+		int[] tomb = {5, 3, 1, 4, 2};
+		LinearisKereses (tomb, 5);
+		Rendezes (tomb);
+		System.out.print("A tomb sorba rendezve: ");
+		for (int i = 0; i < tomb.length; i++)
+		{
+			System.out.print(tomb[i] + " ");
+		}
+		BinarisKereses (tomb, 4);
+	}
+	
+	static void LinearisKereses (int[] tomb, int n)
+	{
+		for (int i = 0; i < tomb.length; i++)
+		{
+			if (tomb[i] == n)
+			{
+				System.out.println("A keresett szám, a tömb " + (i + 1) + ". eleme.");
+				return;
+			}
+		}
+		System.out.println("A keresett szám nem található meg a tömbben.");
+	}
+	
+	static void Rendezes (int[] tomb)
+	{
+		int min, temp;
+		for (int i = 0; i < tomb.length - 1; i++)
+		{
+			min = i;
+			for (int j = i + 1; j < tomb.length; j++)
+			{
+				if (tomb[min] > tomb[j])
+				{
+					min = j;
+				}
+			}
+			temp = tomb[min];
+			tomb[min] = tomb[i];
+			tomb[i] = temp;
+		}
+	}
+
+	static void BinarisKereses (int[] tomb, int keresett)
+	{
+	}
+	
+	static void Kiir ()
+	{
+		for (int i = 1; i <= 5; i++)
+		{
+			for (int j = 1; j <= i; j++)
+			{
+				System.out.print(i);
+			}
+			System.out.println("");
+		}
+	}
+}

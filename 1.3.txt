@@ -1,0 +1,29 @@
+
+public class asd
+{
+	public static void main (String[] args)
+	{
+		// 3) Órai feladat
+		System.out.println("\nHarmadik feladat:");
+		SzamParok ();
+	}
+	
+	static void SzamParok ()
+	{
+		int ikerPrimek = 0;
+		for (int i = 2; i < 100; i++)
+		{
+			for (int j = 2; j < 100; j++)
+			{
+				if (i != j)
+				{
+					if (Prime(i) == 1 && Prime(j) == 1 && j - i == 2)
+					{
+						ikerPrimek++;
+						System.out.println(i + ", " + j);
+					}
+				}
+			}
+		}
+	}
+}
