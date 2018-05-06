@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class main
+{
+
+	public static void main(String[] args)
+	{
+		Scanner scan = new Scanner (System.in);
+		Dolgozo csaba = new Dolgozo ();
+		Dolgozo laci = new Dolgozo ();
+		Dolgozo[] beosztottak = new Dolgozo[5];
+				
+		csaba.setNev("Novák Csaba");
+		csaba.setFizetes(1000);
+		csaba.AdatokatKiir();
+		csaba.FizetesEmeles(450);
+		csaba.AdatokatKiir();
+		csaba.FizetendoAdo(csaba.getFizetes());
+		
+		laci.setNev("Novák László");
+		laci.setFizetes (2000);
+		
+		System.out.println("Nagyobb e Csaba fizetése a Laciénál? " + csaba.NagyobbEAFizetes (csaba.getFizetes(), laci.getFizetes()));
+		
+		for (int i = 0; i < 5; i++)
+		{
+			beosztottak[i] = new Dolgozo ();
+			System.out.print ("Add meg a(z) " + (i + 1) + ". dolgozo keresztnevét: ");
+			beosztottak[i].setNev (scan.next());
+			System.out.print ("Add meg a(z) " + (i + 1) + ". dolgozo fizetését: ");
+			beosztottak[i].setFizetes (scan.nextInt());
+		}
+		
+		KinekALegnagyobbAFizetese (beosztottak);
+		System.out.println("A dolgozok átlagos fizetése: " + DolgozokAtlagFizetese (beosztottak));
+		DolgozokAltalFizetettAdo (beosztottak);
+	}
+	
+	static void KinekALegnagyobbAFizetese (Dolgozo[] dolgozo)
+	{
+		int max = 0;
+		for (int i = 1; i < dolgozo.length; i++)
+		{
+			if (dolgozo[max].getFizetes() < dolgozo[i].getFizetes())
+			{
+				max = i;
+			}
+		}
+		System.out.println("A legmagasabb fizetése " + dolgozo[max].getName() + "-nak volt, " + dolgozo[max].getFizetes() + " Ft.");
+	}
+	
+	static int DolgozokAtlagFizetese (Dolgozo[] dolgozo)
+	{
+		int atlagFizetes = 0;
+		for (int i = 0; i < dolgozo.length; i++)
+		{
+			atlagFizetes += dolgozo[i].getFizetes();
+		}
+		atlagFizetes = atlagFizetes / dolgozo.length;
+		
+		return atlagFizetes;
+	}
+	
+	static void DolgozokAltalFizetettAdo (Dolgozo[] beosztottak)
+	{
+		double dolgozokAltalFizetettAdo = 0.16 * beosztottak.length * DolgozokAtlagFizetese (beosztottak);
+		System.out.println("A dolgozok által fizetett adó: " + dolgozokAltalFizetettAdo);
+	}
+}

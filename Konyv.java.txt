@@ -1,0 +1,57 @@
+
+public class Konyv
+{
+	private String cim, szerzo;
+	private int megjelenesiEv, ar;
+	
+	public void setCim (String cim)
+	{
+		this.cim = cim;
+	}
+	
+	public void setSzerzo (String szerzo)
+	{
+		this.szerzo = szerzo;
+	}
+	
+	public void setMegjelenesiEv (int megjelenesiEv)
+	{
+		this.megjelenesiEv = megjelenesiEv;
+	}
+	
+	public void setAr (int ar)
+	{
+		this.ar = ar;
+	}
+	
+	public String getCim ()
+	{
+		return this.cim;
+	}
+	
+	public String getSzerzo ()
+	{
+		return this.szerzo;
+	}
+	
+	public int getMegjelenesiEv ()
+	{
+		return this.megjelenesiEv;
+	}
+	
+	public int getAr ()
+	{
+		return this.ar;
+	}
+	
+	public double ArSzazalekosNovelese (double szazalek)
+	{
+		ar += ar * (szazalek / 100);
+		return ar;
+	}
+	
+	public String KonyvAdatok ()
+	{
+		return getCim () + ", " + getSzerzo () + ", " + getMegjelenesiEv () + ", " + getAr () + "Ft.";
+	}
+}

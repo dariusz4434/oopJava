@@ -1,0 +1,52 @@
+
+public class Dolgozo
+{
+	private String nev;
+	private int fizetes;
+	
+	public void setNev (String nev)
+	{
+		this.nev = nev;
+	}
+	
+	public void setFizetes (int fizetes)
+	{
+		this.fizetes = fizetes;
+	}
+	
+	public void FizetesEmeles (int emeles)
+	{
+		fizetes += emeles;
+	}
+	
+	public String getName ()
+	{
+		return this.nev;
+	}
+	public int getFizetes ()
+	{
+		return this.fizetes;
+	}
+	
+	public void AdatokatKiir ()
+	{
+		System.out.println("Név: " + getName () + ", fizetés: " + getFizetes ());
+	}
+	
+	public void FizetendoAdo (int fizetes)
+	{
+		System.out.println("A fizetésed után ennyi adót kell fizetned: " + (int)(fizetes * 0.16));
+	}
+	
+	public boolean NagyobbEAFizetes (int fizetes_1, int fizetes_2)
+	{
+		boolean nagyobb = true;
+		
+		if (fizetes_1 < fizetes_2)
+		{
+			nagyobb = false;
+		}
+		
+		return nagyobb;
+	}
+}

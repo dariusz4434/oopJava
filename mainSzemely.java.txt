@@ -1,0 +1,22 @@
+
+public class mainSzemely
+{
+
+	public static void main (String[] args)
+	{
+		Szemely csaba = new Szemely ();
+		Szemely laci = new Szemely ();
+		
+		csaba.setNev ("Novák Csaba");
+		csaba.setSuly (95);
+		csaba.setMagassag (1.85);
+		
+		laci.setNev ("Novák László");
+		laci.setSuly(88);
+		laci.setMagassag(1.96);
+		
+		System.out.println (csaba.AlkatOsszesito());
+		System.out.println (laci.AlkatOsszesito());
+	}
+
+}

@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class mainKonyv
+{
+
+	public static void main (String[] args)
+	{
+		Scanner scan = new Scanner (System.in);
+		Konyv mortalCauses = new Konyv ();
+		
+		mortalCauses.setCim ("Mortal Causes");
+		mortalCauses.setSzerzo ("Ian Rankin");
+		mortalCauses.setMegjelenesiEv (1994);
+		mortalCauses.setAr (1000);
+		
+		mortalCauses.ArSzazalekosNovelese (10);
+		System.out.println (mortalCauses.KonyvAdatok());
+	}
+
+}

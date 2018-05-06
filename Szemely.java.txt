@@ -1,0 +1,64 @@
+
+public class Szemely
+{
+	private String nev;
+	private int suly;
+	private double magassag;
+	
+	public void setNev (String nev)
+	{
+		this.nev = nev;
+	}
+	
+	public void setSuly (int suly)
+	{
+		this.suly = suly;
+	}
+	
+	public void setMagassag (double magassag)
+	{
+		this.magassag = magassag;
+	}
+	
+	public String getNev ()
+	{
+		return this.nev;
+	}
+	
+	public int getSuly ()
+	{
+		return this.suly;
+	}
+	
+	public double getMagassag ()
+	{
+		return this.magassag;
+	}
+	
+	private double Testtomegindex ()
+	{
+		double tti = getSuly () / (getMagassag () * getMagassag ());
+		
+		return tti;
+	}
+	
+	private String Alkat ()
+	{
+		double tti = Testtomegindex ();
+		String alkat = "Normál!";
+		if (tti < 18.5)
+		{
+			alkat = "Sovány!";
+		}
+		else if (tti > 25)
+		{
+			alkat = "Kövér!";
+		}
+		return alkat;
+	}
+	
+	public String AlkatOsszesito ()
+	{
+		return getNev () + ", " + getSuly () + "kg, " + getMagassag () + "m, tti: " + Testtomegindex () + ": " + Alkat ();
+	}
+}
