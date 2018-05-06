@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Calculator
+{
+	double elsoSzam ,masodikSzam;
+	char muvelet;
+	
+	public void Calculate ()
+	{
+		Beker2 ();
+		switch (muvelet)
+		{
+			case '+':
+				System.out.println(elsoSzam + masodikSzam);
+				break;
+			case '-':
+				System.out.println(elsoSzam - masodikSzam);
+				break;
+			case '*':
+				System.out.println(elsoSzam * masodikSzam);
+				break;
+			case '/':
+				if (masodikSzam == 0)
+				{
+					System.out.println("ERROR");
+				}
+				else
+				{
+					System.out.println(elsoSzam / masodikSzam);
+				}
+		}
+	}
+	
+	private void Beker1 ()
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("Add meg az elsõ számot: ");
+		elsoSzam = scan.nextDouble();
+		System.out.print("Add meg a mûveleti jelet: ");
+		muvelet = scan.next().charAt(0);
+		System.out.print("Add meg a második számot: ");
+		masodikSzam = scan.nextDouble();
+	}
+	
+	private void Beker2 ()
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("Add meg a kiszámolandó egyenletet: ");
+		String szamolando = scan.nextLine();
+		String[] adatok = szamolando.split(" ");
+		elsoSzam = Integer.parseInt(adatok[0]);
+		muvelet = adatok[1].charAt(0);
+		masodikSzam = Integer.parseInt(adatok[2]);
+	}
+}

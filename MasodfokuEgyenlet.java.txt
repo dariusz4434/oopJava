@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class MasodfokuEgyenlet
+{
+	double a, b, c, x1, x2;
+	
+	public void Szamitasa ()
+	{
+		Beker ();
+		x1 = (-b + Math.sqrt (b * b - 4 * a * c)) / 2 * a;
+		x2 = (-b - Math.sqrt (b * b - 4 * a * c)) / 2 * a;
+		
+		System.out.println("Az egyenlet elso megoldása: " + x1);
+		System.out.println("Az egyenlet masodik megoldása: " + x2);
+	}
+	
+	private void Beker ()
+	{
+		Scanner scan = new Scanner (System.in);
+		
+		System.out.print("Add meg a másodfokú egyenlet három konstansát szóközzel elválasztva: ");
+		String masodfokuEgyenlet = scan.nextLine();
+		String[] egyenletTagok = masodfokuEgyenlet.split(" ");
+		a = Double.parseDouble (egyenletTagok[0]);
+		b = Double.parseDouble (egyenletTagok[1]);
+		c = Double.parseDouble (egyenletTagok[2]);
+	}
+}
+ 

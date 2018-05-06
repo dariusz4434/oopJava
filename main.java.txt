@@ -1,69 +1,116 @@
+import java.util.Random;
 import java.util.Scanner;
+import java.lang.Math;
+import java.util.Arrays;
 
 public class main
 {
-
 	public static void main(String[] args)
 	{
+		Calculator calculator = new Calculator();
+		MasodfokuEgyenlet masodfokuEgyenlet = new MasodfokuEgyenlet ();
 		Scanner scan = new Scanner (System.in);
-		Dolgozo csaba = new Dolgozo ();
-		Dolgozo laci = new Dolgozo ();
-		Dolgozo[] beosztottak = new Dolgozo[5];
-				
-		csaba.setNev("Novák Csaba");
-		csaba.setFizetes(1000);
-		csaba.AdatokatKiir();
-		csaba.FizetesEmeles(450);
-		csaba.AdatokatKiir();
-		csaba.FizetendoAdo(csaba.getFizetes());
 		
-		laci.setNev("Novák László");
-		laci.setFizetes (2000);
-		
-		System.out.println("Nagyobb e Csaba fizetése a Laciénál? " + csaba.NagyobbEAFizetes (csaba.getFizetes(), laci.getFizetes()));
-		
-		for (int i = 0; i < 5; i++)
+		// Elsõ feladat
+		boolean folytat = true;
+		String eldont;
+		do
 		{
-			beosztottak[i] = new Dolgozo ();
-			System.out.print ("Add meg a(z) " + (i + 1) + ". dolgozo keresztnevét: ");
-			beosztottak[i].setNev (scan.next());
-			System.out.print ("Add meg a(z) " + (i + 1) + ". dolgozo fizetését: ");
-			beosztottak[i].setFizetes (scan.nextInt());
-		}
+			calculator.Calculate();
+			System.out.println("Szeretne új mûveletet megadni? (igen/nem)");
+			eldont = scan.next();
+			if (eldont == "nem")
+			{
+				folytat = false;
+			}
+		} while (folytat);
 		
-		KinekALegnagyobbAFizetese (beosztottak);
-		System.out.println("A dolgozok átlagos fizetése: " + DolgozokAtlagFizetese (beosztottak));
-		DolgozokAltalFizetettAdo (beosztottak);
+		
+		// Második feladat
+		int[] tomb = new int[10];
+		FeltoltRandomSzamokkal1 (tomb);
+		FeltoltRandomSzamokkal2 (tomb);
+		Megfordit (tomb);
+		LegnagyobbParos (tomb);
+		
+		// Harmadik feladat
+		double[] doubleTomb = new double[10];
+		BeolvasErtekeket (doubleTomb);
+		MertaniAtlag (doubleTomb);
+		
+		// Elso Házi feladat
+		masodfokuEgyenlet.Szamitasa();
 	}
 	
-	static void KinekALegnagyobbAFizetese (Dolgozo[] dolgozo)
+	static void FeltoltRandomSzamokkal1 (int tomb[])
 	{
-		int max = 0;
-		for (int i = 1; i < dolgozo.length; i++)
+		Random rand = new Random();
+		for (int i = 0; i < tomb.length; i++)
 		{
-			if (dolgozo[max].getFizetes() < dolgozo[i].getFizetes())
+			tomb[i] = rand.nextInt(50) + 1;
+		}
+	}
+	
+	static void FeltoltRandomSzamokkal2 (int tomb[])
+	{
+		for (int i = 0; i <tomb.length; i++)
+		{
+			tomb[i] = (int)(Math.random() * 50) + 1;
+			System.out.print(tomb[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	static void Megfordit (int tomb[])
+	{
+		for (int i = tomb.length - 1; i >= 0; i--)
+		{
+			System.out.print(tomb[i] + " ");
+		}
+	}
+	
+	static void LegnagyobbParos (int tomb[])
+	{
+		int max = -1, i = 0;
+		while (i < tomb.length)
+		{
+			if (tomb[i] % 2 == 0)
 			{
 				max = i;
+				i++;
+				while (i < tomb.length)
+				{
+					if (tomb[max] < tomb[i] && tomb[i] % 2 == 0)
+					{
+						max = i;
+					}
+					i++;
+				}
+				System.out.println("\nA tömbben a legnagyobb páros szám: " + tomb[max]);
+				return;
 			}
+			i++;
 		}
-		System.out.println("A legmagasabb fizetése " + dolgozo[max].getName() + "-nak volt, " + dolgozo[max].getFizetes() + " Ft.");
+		System.out.println("\nA tömbnen nincs páros szám!");
 	}
 	
-	static int DolgozokAtlagFizetese (Dolgozo[] dolgozo)
+	static void BeolvasErtekeket (double doubleTomb[])
 	{
-		int atlagFizetes = 0;
-		for (int i = 0; i < dolgozo.length; i++)
+		Scanner scan = new Scanner (System.in);
+		for (int i = 0; i < doubleTomb.length; i++)
 		{
-			atlagFizetes += dolgozo[i].getFizetes();
+			doubleTomb[i] = scan.nextDouble();
 		}
-		atlagFizetes = atlagFizetes / dolgozo.length;
-		
-		return atlagFizetes;
 	}
 	
-	static void DolgozokAltalFizetettAdo (Dolgozo[] beosztottak)
+	static void MertaniAtlag (double doubleTomb[])
 	{
-		double dolgozokAltalFizetettAdo = 0.16 * beosztottak.length * DolgozokAtlagFizetese (beosztottak);
-		System.out.println("A dolgozok által fizetett adó: " + dolgozokAltalFizetettAdo);
+		double osszSzorzat = 1.f, mertaniAtlag;
+		for (int i = 0; i < doubleTomb.length; i++)
+		{
+			osszSzorzat *= doubleTomb[i];
+		}
+		mertaniAtlag = Math.pow(osszSzorzat, -(doubleTomb.length));
+		System.out.println(mertaniAtlag);
 	}
 }
