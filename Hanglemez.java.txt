@@ -1,0 +1,57 @@
+
+public class Hanglemez
+{
+	private String eloado, cim;
+	private int hossz;
+	
+	Hanglemez (String eloado, String cim, int hossz)
+	{
+		this.eloado = eloado;
+		this.cim = cim;
+		this.hossz = hossz;
+	}
+	
+	public String getEloado ()
+	{
+		return this.eloado;
+	}
+	
+	public String getCim ()
+	{
+		return this.cim;
+	}
+	
+	public int getHossz ()
+	{
+		return this.hossz;
+	}
+	
+	public String AdatokKiirasa ()
+	{
+		return "Elõadó: " + getEloado () + ", Cím: " + getCim () + ", hossz (perc): " + getHossz ();
+	}
+	
+	public int HosszabbMintParameter (int hossz)
+	{
+		int nagyobbE = -1;
+		if (getHossz () > hossz)
+		{
+			nagyobbE = 1;
+		}
+		if (getHossz () == hossz)
+		{
+			nagyobbE = 0;
+		}
+		return nagyobbE;
+	}
+	
+	public boolean ifEloado (String eloado)
+	{
+		boolean igazEloado = false;
+		if (eloado.equals(getEloado ()))
+		{
+			igazEloado = true;
+		}
+		return igazEloado;
+	}
+}

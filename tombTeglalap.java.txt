@@ -1,0 +1,60 @@
+import java.util.Random;
+
+public class tombTeglalap
+{
+	public static void main (String[] args)
+	{
+		Random rand = new Random ();
+		Téglalap[] teglalap = new Téglalap[10];
+		Téglalap teglalap_1 = new Téglalap (4, 5);
+		
+		for (int i = 0; i < 10; i++)
+		{
+			teglalap[i] = new Téglalap (rand.nextInt(9) + 2, rand.nextInt(9) + 2);
+			System.out.println (teglalap[i].AdatokKiírasa());
+		}
+		System.out.println ("A legkisebb területû téglalap: " + Legkisebb (teglalap));;
+		System.out.println ("A beolvasott téglalaptól ennyinek kisebb a területe: " + KisebbTeglalapok (teglalap, teglalap_1));
+	
+		Megegyezik (teglalap, teglalap_1);
+	}
+	
+	static int Legkisebb (Téglalap teglalap[])
+	{
+		int min = 0;
+		for (int i = 1; i < teglalap.length; i++)
+		{
+			if (teglalap[min].a_oldal > teglalap[i].b_oldal)
+			{
+				min = i;
+			}
+		}
+		return teglalap[min].Terulet();
+	}
+	
+	static int KisebbTeglalapok (Téglalap teglalap[], Téglalap teglalap_1)
+	{
+		int db = 0;
+		for (int i = 0; i < teglalap.length; i++)
+		{
+			if (teglalap_1.Terulet() > teglalap[i].Terulet())
+			{
+				db++;
+			}
+		}
+		return db;
+	}
+	
+	static void Megegyezik (Téglalap teglalap[], Téglalap teglalap_1)
+	{
+		for (int i = 0; i < teglalap.length; i++)
+		{
+			if (teglalap[i].a_oldal == teglalap_1.a_oldal && teglalap[i].b_oldal == teglalap_1.b_oldal)
+			{
+				System.out.println ("Ennek a téglalapnak az oldalai megegyeznek a beolvasottal: " + (i + 1));
+				return;
+			}
+		}
+		System.out.println("nincs egyezõ");
+	}
+}

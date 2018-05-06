@@ -1,0 +1,59 @@
+
+public class Téglalap
+{
+	public int a_oldal, b_oldal;
+	
+	Téglalap (int a_oldal, int b_oldal)
+	{
+		this.a_oldal = a_oldal;
+		this.b_oldal = b_oldal;
+	}
+	
+	Téglalap (int oldal)
+	{
+		this.a_oldal = oldal;
+		this.b_oldal = oldal;
+	}
+	
+	public int Terulet ()
+	{
+		return a_oldal * b_oldal;
+	}
+	
+	public String AdatokKiírasa ()
+	{
+		return a_oldal + " " + b_oldal + ": " + Terulet ();
+	}
+	
+	public void setTeglalapOldal (int a_oldal, int b_oldal)
+	{
+		this.a_oldal = a_oldal;
+		this.b_oldal = b_oldal;
+	}
+	
+	public void setNegyzetOldal (int a_oldal)
+	{
+		this.a_oldal = a_oldal;
+		this.b_oldal = a_oldal;
+	}
+	
+	public boolean NagyobbTeruletuE (int nagyobbTerulet)
+	{
+		boolean nagyobbE = false;
+		if (Terulet () > nagyobbTerulet)
+		{
+			nagyobbE = true;
+		}
+		return nagyobbE;
+	}
+	
+	public boolean EgyenloekEAzOldalak (int a_oldal, int b_oldal)
+	{
+		boolean egyenloekEAzOldalak = false;
+		if (this.a_oldal == a_oldal && this.b_oldal == b_oldal)
+		{
+			egyenloekEAzOldalak = true;
+		}
+		return egyenloekEAzOldalak;
+	}
+}

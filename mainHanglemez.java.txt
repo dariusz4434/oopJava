@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class mainHanglemez
+{
+
+	public static void main(String[] args)
+	{
+		Scanner scan = new Scanner (System.in);
+		System.out.print ("A lemez darabszáma: ");
+		int darab = scan.nextInt();
+		Hanglemez[] hanglemez = new Hanglemez[darab];
+		Beker (hanglemez);
+		LeghosszabbLemez (hanglemez);
+		KiirEloadoLemezeit (hanglemez, "Csaba");
+	}
+	
+	static void Beker (Hanglemez hanglemez[])
+	{
+		Scanner scan = new Scanner (System.in);
+		for (int i = 0; i < hanglemez.length; i++)
+		{
+			System.out.print ("A lemez elõadója: ");
+			String eloado = scan.next();
+			System.out.print ("A lemez címe: ");
+			String cim = scan.next();
+			System.out.print ("A lemez hossza: ");
+			int hossz = scan.nextInt();
+			hanglemez[i] = new Hanglemez (eloado, cim, hossz);
+		}
+	}
+	
+	static void LeghosszabbLemez (Hanglemez hanglemez[])
+	{
+		int max = 0;
+		for (int i = 1; i < hanglemez.length; i++)
+		{
+			if (hanglemez[max].getHossz() < hanglemez[i].getHossz())
+			{
+				max = i;
+			}
+		}
+		System.out.println("A leghosszabb lemez adatai: " + hanglemez[max].AdatokKiirasa());
+	}
+	
+	static void KiirEloadoLemezeit (Hanglemez hanglemez[], String eloado)
+	{
+		for (int i = 0; i < hanglemez.length; i++)
+		{
+			if (hanglemez[i].getEloado().equals(eloado))
+			{
+				System.out.println(hanglemez[i].AdatokKiirasa());
+			}
+		}
+	}
+}

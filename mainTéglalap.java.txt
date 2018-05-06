@@ -1,0 +1,24 @@
+
+public class mainTéglalap
+{
+	public static void main (String[] args)
+	{
+		Téglalap teglalapA = new Téglalap (2, 3);
+		Téglalap teglalapB = new Téglalap (3, 5);
+		Téglalap teglalapC = teglalapA;
+		
+		System.out.println (teglalapA.AdatokKiírasa ());
+		System.out.println (teglalapB.AdatokKiírasa ());
+		System.out.println (teglalapC.AdatokKiírasa ());
+		
+		teglalapA.setTeglalapOldal (4, 6);
+		System.out.println (teglalapA.AdatokKiírasa ());
+		System.out.println (teglalapB.AdatokKiírasa ());
+		System.out.println (teglalapC.AdatokKiírasa ());
+		
+		teglalapA.setTeglalapOldal(teglalapB.a_oldal, teglalapB.b_oldal);
+		System.out.println(teglalapA.AdatokKiírasa () + " == " + teglalapB.AdatokKiírasa ());
+		System.out.println(teglalapA.AdatokKiírasa () + " == " + teglalapC.AdatokKiírasa ());
+		System.out.println(teglalapA.EgyenloekEAzOldalak (teglalapB.a_oldal, teglalapB.b_oldal));
+	}
+}
