@@ -1,0 +1,56 @@
+package ceges;
+
+public class Eloadas extends Rendezveny
+{
+	private String eloadoNeve;
+	private int oradij;
+	
+	public Eloadas(String megnevezes, int hossz, String eloadoNeve, int oradij)
+	{
+		super(megnevezes, hossz);
+		this.eloadoNeve = eloadoNeve;
+		this.oradij = oradij;
+	}
+	
+	public Eloadas(String megnevezes, String eloadoNeve, int oradij)
+	{
+		super(megnevezes);
+		this.eloadoNeve = eloadoNeve;
+		this.oradij = oradij;
+	}
+
+	public String toString ()
+	{
+		return "Rendezvény neve: " + this.getMegnevezes() + ", hossza: " + this.getHossz() + ", elõadó: " + this.eloadoNeve;
+	}
+	
+	@Override
+	public int RendezvenyAra()
+	{
+		return this.getHossz() * this.oradij;
+	}
+	
+	public boolean HosszabbE (Eloadas eloadas)
+	{
+		if (this.getHossz() > eloadas.getHossz())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	static int KisebbAru (Eloadas eloadas1, Eloadas eloadas2)
+	{
+		if (eloadas1.oradij < eloadas2.oradij)
+		{
+			return eloadas1.oradij;
+		}
+		else
+		{
+			return eloadas2.oradij;
+		}
+	}
+}
