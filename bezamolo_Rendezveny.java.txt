@@ -1,0 +1,36 @@
+package ceges;
+
+public abstract class Rendezveny
+{
+	private String megnevezes;
+	private int hossz; // percben
+	
+	public Rendezveny (String megnevezes, int hossz) // elsõ konstruktor
+	{
+		this.megnevezes = megnevezes;
+		this.hossz = hossz;
+	}
+	
+	public Rendezveny (String megnevezes) // második konstruktor
+	{
+		this.megnevezes = megnevezes;
+		this.hossz = 60; // 1 óra 60 perc
+	}
+	
+	public String toString ()
+	{
+		return "Megnevezés: " + this.megnevezes + ", hossza: " + this.hossz;
+	}
+	
+	public abstract int RendezvenyAra ();
+	
+	public String getMegnevezes ()
+	{
+		return this.megnevezes;
+	}
+	
+	public int getHossz ()
+	{
+		return this.hossz;
+	}
+}
