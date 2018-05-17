@@ -1,0 +1,44 @@
+package ceges.teszt;
+
+import java.util.Scanner;
+
+import ceges.Eloadas;
+
+public class RendezvenyTeszt
+{
+	public static void main(String[] args)
+	{
+		Scanner scan = new Scanner (System.in);
+		Eloadas[] eloadasok = new Eloadas[5];
+		for (int i = 0; i < eloadasok.length; i++) // 1.
+		{
+			String megnevezes = scan.next();
+			int hossz = scan.nextInt();
+			String eloadasNeve = scan.next();
+			int oradij = scan.nextInt();
+			
+			eloadasok[i] = new Eloadas (megnevezes, hossz, eloadasNeve, oradij);
+		}
+		
+		for (int i = 0; i < eloadasok.length; i++) // 2.
+		{
+			System.out.println(eloadasok[i].toString() + ", ára: " + eloadasok[i].RendezvenyAra());
+		}
+		
+		int osszAr = 0;
+		for (int i = 0; i < eloadasok.length; i++) // 3.
+		{
+			osszAr += eloadasok[i].RendezvenyAra();
+		}
+		
+		int min = 0;
+		for (int i = 1; i < eloadasok.length; i++) // 3.
+		{
+			if (eloadasok[min].RendezvenyAra() > eloadasok[i].RendezvenyAra())
+			{
+				min = i;
+			}
+		}
+		System.out.println("A legkisebb egységárú az " + (min + 1));
+	}
+}
